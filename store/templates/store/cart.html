@@ -1,0 +1,96 @@
+{% extends 'store/base.html' %}
+{% load static %}
+{% block content %}
+<div class="card my-5">
+    <div class="card-body d-flex justify-content-between p-4">
+        <h5>
+            Items: <strong> {{ order.get_cart_items }}</strong>
+        </h5>
+        <h5>
+            Total: <strong>${{ order.get_cart_total|floatformat:2 }}</strong>
+        </h5>
+        <a href="{% url 'store' %}" class="btn btn-outline-secondary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
+            </svg>
+            Continue Shopping
+        </a>
+    </div>
+</div>
+<div class="card mb-5">
+    <div class="card-body">
+        <div class="cart-row">
+            <div style="flex:2"></div>
+            <div style="flex:2"><strong>Item</strong></div>
+            <div style="flex: 1;"><strong>Price</strong></div>
+            <div style="flex: 1;"><strong>Quantity</strong></div>
+            <div style="flex: 1;"><strong>Total</strong></div>
+        </div>
+        {% for item in items %}
+        <div class="cart-row">
+            <div style="flex:2">
+                <a href="{% url 'detail_item' item.product.id %}">
+                    <img class='row-img' src="{% static 'images/store_placeholder.png' %}" alt="">
+                </a>
+            </div>
+            <div style="flex:2">
+                <a href="{% url 'detail_item' item.product.id %}">
+                    <strong>{{ item.product.name }}</strong>
+                </a>
+            </div>
+            <div style="flex: 1;"><strong>{{ item.product.price|floatformat:2}}</strong></div>
+            <div style="flex: 1;">
+                <div class="d-flex align-items-center">
+                    <strong>{{ item.quantity }}</strong>
+                    <div>
+                        <div class="change-quantity update-cart" data-product='{{ item.product.id }}' data-action="add">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-up-fill" viewBox="0 0 16 16">
+                                <path d="M7.247 4.86l-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/>
+                            </svg>
+                        </div>
+                        <div class="change-quantity update-cart" data-product='{{ item.product.id }}' data-action='remove'>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                                <path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div style="flex: 1;">
+                <strong>${{ item.get_total }}</strong>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="card my-5 p-3">
+    <div class="card-body">
+        <a href="{% url 'store' %}" class="btn btn-outline-secondary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
+            </svg>
+            Continue Shopping
+        </a>
+        <hr>
+        <table class='w-100 mx-auto'>
+            <tr>
+                <th class="cart-table-head">
+                    <h5>
+                        Items: <strong> {{ order.get_cart_items }}</strong>
+                    </h5>
+                </th>
+                <th class="cart-table-head">
+                    <h5 >
+                        Total: <strong>${{ order.get_cart_total|floatformat:2 }}</strong>
+                    </h5>
+                </th>
+                <th id="cart-table-checkout">
+                    <a href="{% url 'checkout' %}" class='btn btn-outline-warning'>Checkout</a>
+                </th>
+            </tr>
+        </table>
+
+    </div>
+</div>
+{% endblock content %}
