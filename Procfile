@@ -1,0 +1,1 @@
+web: gunicorn thebrokenfox.wsgi --log-file -
