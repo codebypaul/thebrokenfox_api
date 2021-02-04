@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.core.validators import MaxValueValidator, MinValueValidator
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 class Customer(models.Model):
@@ -25,9 +26,9 @@ class Product(models.Model):
     name = models.CharField(max_length=200)
     price = models.DecimalField(max_digits=7, decimal_places=2)
     digital = models.BooleanField(default=False, null=True, blank=True)
-    sizes = models.JSONField(default=list)
-    colors = models.JSONField(default=list)
-    image = models.ImageField(null=True, blank=True)
+    sizes = models.JSONField(default=list, null=True, blank=True)
+    colors = models.JSONField(default=list, null=True, blank=True)
+    image = CloudinaryField('image',null=True, blank=True)
     date_added = models.DateTimeField(default=timezone.now)
 
     def __str__(self):

@@ -4,6 +4,11 @@
   padding: 0;
 }
 
+@font-face {
+  font-family: "Special_Elite";
+  src: url("https://fonts.googleapis.com/css2?family=Special+Elite&display=swap");
+}
+
 /*------ navbar ------*/
 .cart-area {
   position: relative;
@@ -22,7 +27,12 @@
   text-align: center;
   border-radius: 50%;
 }
-
+.site-navbar {
+  background: rgba(131, 3, 3, 0.4);
+}
+.company-brand {
+  font-family: "Special_Elite", cursive;
+}
 /*----------footer-----------*/
 footer {
   position: relative;
@@ -61,9 +71,9 @@ footer ul {
   height: 25rem;
   box-shadow: 0 5px 7px 5px rgba(63, 63, 63, 0.5);
   border: 1px solid rgba(200, 200, 200, 1);
-  background-image: url(https://media.architecturaldigest.com/photos/5cc35bea39b7d6ac4b1b2675/16:9/w_2560%2Cc_limit/GettyImages-960609922.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-image: url("../images/brokenfox_red.PNG");
+  background-color: black;
+  background-repeat: repeat;
 }
 .new-items {
   display: flex;

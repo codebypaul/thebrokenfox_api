@@ -9,11 +9,15 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-import django_on_heroku
 from pathlib import Path
 from dotenv import load_dotenv
-load_dotenv()
+
 import os
+import django_on_heroku
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -131,3 +135,9 @@ MEDIA_URL = "/media/"
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 django_on_heroku.settings(locals())
+
+cloudinary.config( 
+  cloud_name = "pwprojectworks", 
+  api_key = os.environ.get("CLOUDINARY_API_KEY"), 
+  api_secret = os.environ.get("CLOUDINARY_SECRET") 
+)

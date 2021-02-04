@@ -35,7 +35,7 @@
         {% for product in products %}
         <a class="mx-2 mb-3 new-item" href="{% url 'detail_item' product.id %}">
           <div class="card">
-              <img src="{% static 'images/store_placeholder.png' %}" alt="" class="card-img">
+              <img src="{{product.image.url}}" alt="" class="card-img">
               <div class="card-body"></div>
               {{product.name}}
           </div>
