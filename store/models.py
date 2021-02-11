@@ -13,6 +13,19 @@ class Customer(models.Model):
     def __str__(self):
         return self.name
 
+class ImageAlbum(models.Model):
+    name = models.CharField(max_length=255, null=False, default=False)
+
+    def images(self):
+        return Image.objects.filter(album=self.id)
+
+
+class Image(models.Model):
+    name = models.CharField(max_length=255, null=False, default=False)
+    image = CloudinaryField("image", null=True, blank=True)
+    default = models.BooleanField(default=False)
+    album = models.ForeignKey(ImageAlbum, null=True, on_delete=models.CASCADE)
+
 
 class Product(models.Model):
     shirt_sizes = [
@@ -23,13 +36,16 @@ class Product(models.Model):
         ("XL", "X-Large"),
         ("XXL", "XX-Large"),
     ]
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, null=False)
+    description = models.TextField(null= False, blank=True)
+    details= models.TextField(null=True, blank=True)
+    item_type = models.CharField(max_length=50, null=False, default=False)
     price = models.DecimalField(max_digits=7, decimal_places=2)
     digital = models.BooleanField(default=False, null=True, blank=True)
     sizes = models.JSONField(default=list, null=True, blank=True)
     colors = models.JSONField(default=list, null=True, blank=True)
-    image = CloudinaryField('image',null=True, blank=True)
     date_added = models.DateTimeField(default=timezone.now)
+    album = models.OneToOneField(ImageAlbum,null=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
@@ -41,7 +57,6 @@ class Product(models.Model):
         except:
             url = ""
         return url
-
 
 class Review(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
@@ -111,3 +126,12 @@ class ShippingAddress(models.Model):
 
     def __str__(self):
         return self.address
+
+class EmailRecipient(models.Model):
+    name = models.CharField(max_length=255)
+    email = models.CharField(max_length=255)
+
+class InfoRequester(models.Model):
+    name = models.CharField(max_length=255)
+    email = models.CharField(max_length=255)
+    message = models.TextField(null=True)

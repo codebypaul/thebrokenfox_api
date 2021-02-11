@@ -4,16 +4,25 @@ from django.http import JsonResponse
 import json, datetime
 from .utils import cartData, guestOrder
 from django.views.generic import DetailView
+from .forms import EmailSignUp, InfoRequest
+
 
 # Create your views here.
 def home(request):
+    if request.method == "POST":
+        print(request.POST)
+        form = EmailSignUp(request.POST)
+        if form.is_valid():
+            form.save()
+
+    form = EmailSignUp()
     data = cartData(request)
 
     cartItems = data["cartItems"]
 
     products = Product.objects.all()
     products = products[:6]
-    context = {"cartItems": cartItems, "products": products}
+    context = {"cartItems": cartItems, "products": products,'form':form}
     return render(request, "store/home.html", context)
 
 
@@ -38,6 +47,32 @@ def checkout(request):
     context = {"items": items, "order": order, "cartItems": cartItems}
     return render(request, "store/checkout.html", context)
 
+
+def apparel(request):
+    data = cartData(request)
+
+    items = data["items"]
+    order = data["order"]
+    cartItems = data["cartItems"]
+    try:
+        products = [Product.objects.get(item_type='Apparel')]
+    except:
+        products = []   
+    context = {"products": products, "cartItems": cartItems}
+    return render(request, "store/store.html", context)
+
+def accessories(request):
+    data = cartData(request)
+
+    items = data["items"]
+    order = data["order"]
+    cartItems = data["cartItems"]
+    try:
+        products = [Product.objects.get(item_type='Accessories')]
+    except:
+        products = []
+    context = {"products": products, "cartItems": cartItems}
+    return render(request, "store/store.html", context)
 
 def store(request):
     data = cartData(request)
@@ -114,11 +149,18 @@ def privacyPolicy(request):
 
 
 def pressAndAffiliates(request):
+    if request.method == "POST":
+        print(request.POST)
+        form = InfoRequest(request.POST)
+        if form.is_valid():
+            form.save()
+
+    form = InfoRequest()  
     data = cartData(request)
 
     cartItems = data["cartItems"]
 
-    context = {"cartItems": cartItems}
+    context = {"cartItems": cartItems, 'form':form}
     return render(request, "store/press_and_affiliates.html", context)
 
 

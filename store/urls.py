@@ -4,7 +4,9 @@ from .views import ProductDetailView
 
 urlpatterns = [
     path("", views.home, name="home"),
-    path("shop/", views.store, name="store"),
+    path("shop/all_products", views.store, name="all_products"),
+    path("shop/apparel/", views.apparel, name="apparel"),
+    path("shop/accessories/", views.accessories, name="accessories"),
     path("cart/", views.cart, name="cart"),
     path("checkout/", views.checkout, name="checkout"),
     path("update_item/", views.updateItem, name="update_item"),

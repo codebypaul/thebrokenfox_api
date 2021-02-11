@@ -5,8 +5,8 @@
 }
 
 @font-face {
-  font-family: "Special_Elite";
-  src: url("https://fonts.googleapis.com/css2?family=Special+Elite&display=swap");
+  font-family: "Cinzel";
+  src: url("../fonts/CinzelDecorative-Bold.ttf");
 }
 
 /*------ navbar ------*/
@@ -31,7 +31,7 @@
   background: rgba(131, 3, 3, 0.4);
 }
 .company-brand {
-  font-family: "Special_Elite", cursive;
+  font-family: "Cinzel", cursive;
 }
 /*----------footer-----------*/
 footer {
@@ -66,14 +66,24 @@ footer ul {
   border-radius: 0.25rem;
 }
 /*------home-------*/
+.carousel-container {
+  padding-top: 5rem;
+}
+.carousel-image {
+  width: 100%;
+  margin: 0 auto;
+}
 .ad-container {
   width: 90%;
   height: 25rem;
   box-shadow: 0 5px 7px 5px rgba(63, 63, 63, 0.5);
   border: 1px solid rgba(200, 200, 200, 1);
-  background-image: url("../images/brokenfox_red.PNG");
+  background-image: url("../images/valentines_fox.PNG");
   background-color: black;
   background-repeat: repeat;
+  color: rgba(200, 200, 200, 1);
+  font-family: Cinzel;
+  text-shadow: 5px 5px 5px rgba(255, 100, 100, 1);
 }
 .new-items {
   display: flex;
@@ -187,8 +197,13 @@ footer ul {
   .news-letter-form {
     width: 75%;
   }
+  .email-form-fields {
+    width: 70%;
+  }
+  .ad-container {
+    width: 70%;
+  }
 }
-
 @media screen and (min-width: 992px) {
   /*-------navbar--------*/
   .site-navbar {
@@ -217,6 +232,19 @@ footer ul {
     right: 1rem;
   }
   /*----home------*/
+  .carousel-container {
+    padding-top: 0;
+    padding: 0 10rem;
+  }
+  .carousel-image {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .carousel-image {
+    width: auto;
+    height: 35rem;
+    margin: 0 auto;
+  }
   .new-item {
     width: 25%;
   }

@@ -3,7 +3,7 @@ const updateBtns = document.getElementsByClassName('update-cart')
 for (i = 0; i < updateBtns.length; i++) {
     
     updateBtns[i].addEventListener('click',function(e){
-        e.preventDefault()
+        // e.preventDefault()
         const productId = this.dataset.product
         const action = this.dataset.action
         console.log('productId:', productId, '\nAction:', action);
