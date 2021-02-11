@@ -1,0 +1,258 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: "Cinzel";
+  src: url("../fonts/CinzelDecorative-Bold.ttf");
+}
+
+/*------ navbar ------*/
+.cart-area {
+  position: relative;
+  /* margin: 0 1.5rem; */
+  width: 2rem;
+  right: 0;
+}
+#cart-total {
+  background: red;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: white;
+  position: absolute;
+  top: -0.75rem;
+  right: -0.75rem;
+  text-align: center;
+  border-radius: 50%;
+}
+.site-navbar {
+  background: rgba(131, 3, 3, 0.4);
+}
+.company-brand {
+  font-family: "Cinzel", cursive;
+}
+/*----------footer-----------*/
+footer {
+  position: relative;
+}
+.copyright-social-payment {
+  /* position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%; */
+}
+.copyright-social-payment a {
+  text-decoration: none;
+  color: white;
+}
+.copyright-social-payment svg {
+  width: 1.5rem;
+}
+.payment-methods h1 {
+  position: absolute;
+  bottom: 0;
+  right: 1rem;
+}
+footer ul {
+  list-style: none;
+  padding: 0;
+}
+.payment-method {
+  height: 2.5rem;
+  margin: 0 0.5rem;
+  padding: 0 0.25rem;
+  border-radius: 0.25rem;
+}
+/*------home-------*/
+.carousel-container {
+  padding-top: 5rem;
+}
+.carousel-image {
+  width: 100%;
+  margin: 0 auto;
+}
+.ad-container {
+  width: 90%;
+  height: 25rem;
+  box-shadow: 0 5px 7px 5px rgba(63, 63, 63, 0.5);
+  border: 1px solid rgba(200, 200, 200, 1);
+  background-image: url("../images/valentines_fox.PNG");
+  background-color: black;
+  background-repeat: repeat;
+  color: rgba(200, 200, 200, 1);
+  font-family: Cinzel;
+  text-shadow: 5px 5px 5px rgba(255, 100, 100, 1);
+}
+.new-items {
+  display: flex;
+  flex-wrap: wrap;
+  /* width: 100%; */
+  justify-content: center;
+}
+.new-item {
+  width: 45%;
+  /* overflow: auto; */
+  white-space: nowrap;
+  /* margin: 0 auto; */
+  text-decoration: none;
+  color: black;
+}
+.new-item:hover {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.news-letter {
+  width: 100%;
+}
+.news-letter-form {
+}
+
+/*------store-------*/
+.store-product-card {
+  width: 80%;
+  margin: 0 auto;
+}
+
+/*-----detail view-------*/
+.choose-product-quantity {
+  border: 1px solid b;
+}
+
+/*------cart--------*/
+.cart-table-head {
+  text-align: left;
+}
+#cart-table-checkout {
+  text-align: right;
+}
+.cart-row {
+  display: flex;
+  align-items: stretch;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid grey;
+}
+
+.row-img {
+  width: 80%;
+}
+
+/*-----checkout-------*/
+.personal-info {
+  display: flex;
+  grid-template-columns: repeat(2, 50%);
+  border-bottom: 1px solid black;
+  padding: 1rem;
+}
+#shipping-info {
+  display: flex;
+  flex-direction: column;
+  height: 13rem;
+  justify-content: space-around;
+  padding: 1rem;
+  /* grid-template-columns: repeat(2, 50%);
+  grid-template-rows: repeat(2, 50%);
+  padding: 1rem; */
+}
+.checkout-form {
+  position: relative;
+}
+#enter-shipping-info {
+  transition: 0.5s linear all;
+}
+#enter-shipping-info.hidden {
+  visibility: hidden;
+}
+#payment-options {
+  transition: 0.5s linear all;
+}
+#payment-options.hidden {
+  visibility: hidden;
+}
+/* .paypal-buttons {
+  transition: 0.5s linear all;
+}
+.paypal-buttons.hidden {
+  visibility: hidden;
+} */
+.checkout-total-container h5 {
+  display: inline;
+}
+.checkout-total-container {
+  display: flex;
+  justify-content: space-between;
+}
+/*-----media queries-----*/
+@media screen and (max-width: 439px) {
+  .new-item {
+    width: 90%;
+  }
+}
+@media screen and (min-width: 700px) {
+  .new-item {
+    width: 45%;
+  }
+  .news-letter-form {
+    width: 75%;
+  }
+  .email-form-fields {
+    width: 70%;
+  }
+  .ad-container {
+    width: 70%;
+  }
+}
+@media screen and (min-width: 992px) {
+  /*-------navbar--------*/
+  .site-navbar {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .navbar-stuff {
+    display: flex;
+    flex-direction: column;
+  }
+  .company-brand {
+    font-size: 3rem;
+    margin: 0 auto;
+  }
+  .product-options {
+    width: 100%;
+  }
+  .product-types-list {
+    margin: 0 auto;
+  }
+  .cart-area {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+  /*----home------*/
+  .carousel-container {
+    padding-top: 0;
+    padding: 0 10rem;
+  }
+  .carousel-image {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .carousel-image {
+    width: auto;
+    height: 35rem;
+    margin: 0 auto;
+  }
+  .new-item {
+    width: 25%;
+  }
+  .news-letter-form {
+    width: 50%;
+  }
+  /*-----store--------*/
+  .store-product-card {
+    width: 100%;
+  }
+}
